@@ -1,9 +1,10 @@
-public class BinaryCode5 {
+public class Task8 {
 	
 	public static void main(String[] args) {
-		int numb = Integer.parseInt(args[0]);
-		int k = 0; 
+		int numb = Integer.parseInt(args[0]); 
 		int twoNumb;
+		int k = 0;
+		int max = 0;
 		String numbStr = "";
 		String newNumbStr = "";
 		
@@ -15,7 +16,6 @@ public class BinaryCode5 {
 		while (numb > 0) {
 			twoNumb = numb % 2;
 			if (twoNumb == 1) {
-				k++;
 				numbStr += "1";
 			} else {
 				numbStr += "0";
@@ -26,11 +26,14 @@ public class BinaryCode5 {
 		char[] a = numbStr.toCharArray();
 		int length = a.length;
 		
-		for (int i = length - 1; i >= 0; i--) {
-			newNumbStr += a[i];
+		for (int i = 1; i <= length - 1; i++) {
+			if (a[i] == a[i-1]) {
+				k++;
+			} else if (k > max) {
+				max = k;
+				k = 1;
+			}
 		}
-	
-		System.out.println("Count: " + k);
-		System.out.println("Binary Code: " + newNumbStr);
+		System.out.println("Count = " + max);
 	}
 }
