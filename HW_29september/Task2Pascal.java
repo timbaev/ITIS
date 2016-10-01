@@ -1,8 +1,8 @@
 public class Task2Pascal {
 	
+	static int[] sumArray = new int[10];
+	
 	public static void main(String[] args) {
-		int temp = 0;
-		int newTemp = 2;
 		boolean check = true;
 		
 		for (int i = 1; i <= 10; i++) {
@@ -15,15 +15,17 @@ public class Task2Pascal {
 	}
 	
 	public static void numberBuilder(int number) {
-			int[] sumArray = new int[number];
 			int[] numberArray = new int[number];
 			numberArray[0] = 1;
 			numberArray[number-1] = 1;
 			for (int i = 1; i < number-1; i++) {
-				numberArray[i] = number-1;
+				numberArray[i] = sumArray[i-1];
 			}
 			for (int i = 0; i < number; i++) {
-				System.out.print(numberArray[i] + " ");
+				System.out.printf(numberArray[i] + " ");
+			}
+			for (int i = 0; i < number - 1; i++) {
+				sumArray[i] = numberArray[i] + numberArray[i+1];
 			}
 		}
 }
