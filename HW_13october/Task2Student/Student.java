@@ -47,14 +47,14 @@ public class Student {
 	
 	
 	//Узнаём текущий курс студента
-	public int getCourse(int startStudyYear) {
+	public static int getCourse(int startStudyYear) {
 		Calendar startYear = Calendar.getInstance();
 		startYear.set(Calendar.YEAR, startStudyYear);
 		long yearStudy = startYear.getTimeInMillis();
 		long today = System.currentTimeMillis();
-		long yearResult = today - year;
+		long yearResult = today - yearStudy;
 		startYear.setTimeInMillis(yearResult);
-		int year = startYear.get(Calendar.YEAR) - 1970 + 1;
+		int year = startYear.get(Calendar.YEAR) + 1 - 1970;
 		return year;
 	}
 	
