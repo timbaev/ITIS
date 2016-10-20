@@ -1,43 +1,46 @@
 public class Control {
 	
-	Array array = new Array();
-	boolean firstStart = true;
+	Point[] points;
+	int size = 0;
 	
-	public void add(int x) {
-		int[] point = array.getPoints();
-		int[] newPoint;
-		if (firstStart) {
-			newPoint = new int[1];
-			newPoint[0] = x;
+	public Point[] getPoints() {
+		return points;
+	}
+	
+	public void add(Point point) {
+		
+		if (size != 0) {
+			size = points.length;
+			Point[] newPoints = new Point[size+1];
+			System.arraycopy(points, 0, newPoints, 0, size);
+			newPoints[size] = point;
+			points = newPoints;
 		} else {
-			int count = point.length;
-			newPoint = new int[count + 1];
-			System.arraycopy(point, 0, newPoint, 0, count);
-			newPoint[count] = x;
+			points = new Point[1];
+			points[0] = point;
+			size = points.length;
 		}
-		firstStart = false;
-		array.setPoints(newPoint);
 	}
 	
-	public void remove(int i) {
-		int[] point = array.getPoints();
-		int count = point.length;
-		int[] newPoint = new int[count - 1];
-		System.arraycopy(point, 0, newPoint, 0, i-1);
-		System.arraycopy(point, i, newPoint, i-1, count - i);
-		array.setPoints(newPoint);
-	}
-	
-	public int get(int i) {
-		int[] point = array.getPoints();
-		int x = point[i];
-		return x;
-	}
-	
-	public void printArray() {
-		int[] point = array.getPoints();
-		for (int v : point) {
-			System.out.print(v + " ");
+	public void remove(int index) {
+		size = points.length;
+		if (index >= size) {
+			System.out.println("Error index > then size of Array");
+		} else {
+			System.arraycopy(points, index + 1, points, index, size - index - 1);
+			size--;
+			points[size] = null;
 		}
+	}
+	
+	public Point get(int index) {
+		size = points.length;
+		if (index >= size) {
+			System.out.println("Error index > then size of Array");
+		} else {
+			return points[index];
+		}
+		return null;
 	}
 }
+	
