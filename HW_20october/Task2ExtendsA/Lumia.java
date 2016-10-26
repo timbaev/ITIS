@@ -1,10 +1,10 @@
 public class Lumia extends Microsoft {
 	
-	String model;
-	String OS;
-	int year;
-	int memory;
-	int weight;
+	private String model;
+	private String OS;
+	private int year;
+	private int memory;
+	private int weight;
 	
 	public void setModel(String model) {
 		this.model = model;
