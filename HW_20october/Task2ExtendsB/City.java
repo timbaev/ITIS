@@ -1,22 +1,27 @@
 public class City extends Republic {
 	
-	private String city, mayor, state, language, president, republic, presidentOfRepublic, republicLanguage, republicLanguageNoneState;
+	private String city;
+	private String mayor;
+	private String state;
+	private String language;
+	private String president;
+	private String republic;
+	private String presidentOfRepublic;
+	private String republicLanguage;
+	private String republicLanguageNoneState;
 	private int year;
 	
 	City(String state, String language, String president, String republic, String presidentOfRepublic, 
 		String republicLanguage, String city, String mayor, int year) {
-		setState(state);
-		setLanguage(language);
-		setPresident(president);
-		setRepublic(republic);
-		setPresidentOfRepublic(presidentOfRepublic);
-		setRepublicLanguage(republicLanguage);
-		republicLanguageNoneState = republicLanguage;
+		super(state, language, president, republic, presidentOfRepublic, republicLanguage);
 		this.city = city;
 		this.mayor = mayor;
 		this.year = year;
+		this.republicLanguageNoneState = republicLanguage;
 		initialization();
 	}
+	
+	
 	
 	public void initialization() {
 		state = getState();

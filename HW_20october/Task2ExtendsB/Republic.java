@@ -4,13 +4,13 @@ public class Republic extends State {
 	protected String presidentOfRepublic;
 	protected String republicLanguages;
 	
-	public void setRepublic(String republic) {
+	Republic(String state, String language, String president, String republic, String presidentOfRepublic, String republicLanguages) {
+		super(state, language, president);
 		this.republic = republic;
+		this.presidentOfRepublic = presidentOfRepublic;
+		setRepublicLanguage(republicLanguages);
 	}
 	
-	public void setPresidentOfRepublic(String presidentOfRepublic) {
-		this.presidentOfRepublic = presidentOfRepublic;
-	}
 	
 	public String getRepublic() {
 		return republic;

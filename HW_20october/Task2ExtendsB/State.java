@@ -4,15 +4,9 @@ public class State {
 	protected String language;
 	protected String president;
 	
-	public void setState(String state) {
+	State(String state, String language, String president) {
 		this.state = state;
-	}
-	
-	public void setLanguage(String language) {
 		this.language = language;
-	}
-	
-	public void setPresident(String president) {
 		this.president = president;
 	}
 	
