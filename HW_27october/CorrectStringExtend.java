@@ -1,15 +1,13 @@
-import java.util.Scanner;
-
-public class CorrectString {
-	static int openCount;
-	static int closeCount;
-	static boolean isCorrect;
+public class CorrectStringExtend {
+	static int squareOpenCount;
+	static int squareCloseCount;
+	static int figureOpenCount;
+	static int figureCloseCount;
 	
-	public static void main(String[] args) {
+	public static void main (String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		String str = scanner.nextLine();
-		checkStr(str);
-		System.out.println("String correct? Result: " + isCorrect);
+		
 	}
 	
 	public static String checkStr(String str) {
