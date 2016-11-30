@@ -23,15 +23,19 @@ public class Task8 {
 			numb /= 2;
 		}
 		
+		System.out.println("Bindary code: " + numbStr);
+		
 		char[] a = numbStr.toCharArray();
 		int length = a.length;
 		
-		for (int i = 1; i <= length - 1; i++) {
-			if (a[i] == a[i-1]) {
+		for (int i = 0; i < length; i++) {
+			if (a[i] == '1') {
 				k++;
-			} else if (k > max) {
-				max = k;
-				k = 1;
+			} else {
+				if (k > max) {
+					max = k;
+				}
+				k = 0;
 			}
 		}
 		System.out.println("Count = " + max);
