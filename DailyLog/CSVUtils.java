@@ -1,3 +1,5 @@
+package DailyLog;
+
 import java.io.IOException;
 import java.io.Writer;
 import java.util.List;
@@ -17,7 +19,6 @@ public class CSVUtils {
         writeLine(w, values, separators, ' ');
     }
 
-    //https://tools.ietf.org/html/rfc4180
     private static String followCVSformat(String value) {
 
         String result = value;

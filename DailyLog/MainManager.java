@@ -1,11 +1,22 @@
+package DailyLog;
+
 import java.text.ParseException;
 import java.util.*;
 
 /**
  * The main class, which control work with user. Reads commands and executes them.
+ *
+ * @author Timur Shafigulin
+ * @version 2.1
+ * @since 03-11-2016
  */
 public class MainManager {
 
+    /**
+     * The main method from which our daily log begins to work
+     *
+     * @param args it isn't used, because we are true IT and we use the scanner
+     */
     public static void main(String[] args) {
 
         String event;
@@ -13,7 +24,6 @@ public class MainManager {
         String dateStart;
         String dateEnd;
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Error writing file");
         System.out.println("Welcome! It is a try IT daily log!");
         Printer.printDocumentation();
         System.out.print("Enter the command: ");

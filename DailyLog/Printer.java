@@ -1,11 +1,19 @@
+package DailyLog;
+
 import java.util.ArrayList;
 
 /**
- * Created by Timbaev on 21.12.2016.
  * Printer information. Helps to create the table and to place there data.
+ *
+ * @author Timur Shafigulin
+ * @version 1.5
+ * @since 21-12-2016
  */
 public class Printer {
 
+    /**
+     * To print documentation of opportunities of the program, to help the user to use it
+     */
     public static void printDocumentation() {
         System.out.println("Documentation");
         System.out.println("In this program, you can:");
@@ -23,6 +31,11 @@ public class Printer {
         System.out.println("____________________");
     }
 
+    /**
+     * Create ASCII table with information of event (beautifully and accurately)
+     *
+     * @param events events which need to be added to the table
+     */
     public static void createASCIITable(ArrayList<Event> events) {
         if (events.size() != 0) {
             String leftAlignFormat = "| %-30s | %-35s |%n";

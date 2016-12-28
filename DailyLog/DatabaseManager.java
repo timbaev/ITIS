@@ -1,3 +1,5 @@
+package DailyLog;
+
 import java.io.*;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -5,16 +7,29 @@ import java.util.Calendar;
 import java.util.List;
 
 /**
- * Created by Timbaev on 21.12.2016.
  * Database Manager. Find and actions with events.
  * I think, the code can be simplified. But it is necessary to rewrite the main structure of a code.
+ *
+ * @author Timur Shafigullin
+ * @version 1.2.1
+ * @since 21-12-2016
  */
 public class DatabaseManager {
 
+    /**
+     * static objects, which using in the class
+     */
     private static FileWriter writer;
     private static String csvFile = "database.csv";
     private static ArrayList<Event> events = new ArrayList<>();
 
+    /**
+     * To write a new event with date in the file
+     *
+     * @param event name of event
+     * @param date  date of event
+     * @see DatabaseManager#recordToDatabase(String, String, String) also see for date with period
+     */
     public static void recordToDatabase(String event, String date) {
         try {
             writer = new FileWriter(csvFile, true);
@@ -44,6 +59,14 @@ public class DatabaseManager {
         }
     }
 
+    /**
+     * To write a new event with period date in the file
+     *
+     * @param event     name of event
+     * @param dateStart date of start of event
+     * @param dateEnd   date of end of event
+     * @see DatabaseManager#recordToDatabase(String, String) also see for date without period
+     */
     public static void recordToDatabase(String event, String dateStart, String dateEnd) {
         try {
             writer = new FileWriter(csvFile, true);
@@ -74,6 +97,9 @@ public class DatabaseManager {
         }
     }
 
+    /**
+     * This method get all data from a database and sends to the Printer on the printing
+     */
     public static void getAllEvents() {
         try {
             BufferedReader fp = new BufferedReader(new FileReader(csvFile));
@@ -91,6 +117,11 @@ public class DatabaseManager {
         }
     }
 
+    /**
+     * This method get data from a database for a certain date
+     *
+     * @param date certain date
+     */
     public static void getEventsForDay(String date) {
         events.clear();
         try {
@@ -135,6 +166,13 @@ public class DatabaseManager {
         }
     }
 
+    /**
+     * This method checks for employment day
+     *
+     * @param day   day, which need for check
+     * @param print function of the printing. If true, then busy days will in addition be printed.
+     * @return the result, is occupied day or is free
+     */
     public static boolean checkBusyDay(Calendar day, boolean print) {
         boolean check = false;
         events.clear();
@@ -187,6 +225,12 @@ public class DatabaseManager {
         return check;
     }
 
+    /**
+     * This method get data from a database for a certain period date and print it
+     *
+     * @param dateStart date with which to begin search
+     * @param dateEnd   date with which to finish search
+     */
     public static void getEventsForPeriod(String dateStart, String dateEnd) {
         events.clear();
 
@@ -232,19 +276,29 @@ public class DatabaseManager {
         }
     }
 
+    /**
+     * Delete all events
+     *
+     * @return result of deleting
+     */
     public static boolean clearEvents() {
         File file = new File(csvFile);
         return file.delete();
     }
 
-    public static void findEvents(String keyWord) {
+    /**
+     * Helps to find an event according to the keyword
+     *
+     * @param keyword the keyword according to which we look for
+     */
+    public static void findEvents(String keyword) {
         events.clear();
         try {
             BufferedReader bf = new BufferedReader(new FileReader(csvFile));
             String[] cols;
             while (bf.ready()) {
                 cols = bf.readLine().split(",");
-                if (cols[0].contains(keyWord)) {
+                if (cols[0].contains(keyword)) {
                     events.add(new Event(cols[0], cols[1]));
                 }
             }
