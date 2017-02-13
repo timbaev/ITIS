@@ -1,3 +1,5 @@
+package CW_9Febrary.data;
+
 import java.util.ArrayList;
 
 public class FileDB implements Db {
@@ -15,6 +17,7 @@ public class FileDB implements Db {
 
     @Override
     public Object[] findAll() throws DbException {
+        objects.add("Hello world!");
         return objects.toArray(new Object[objects.size()]);
     }
 

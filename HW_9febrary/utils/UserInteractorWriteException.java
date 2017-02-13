@@ -1,3 +1,5 @@
+package CW_9Febrary.utils;
+
 public class UserInteractorWriteException extends UserInteractorException {
 
     public UserInteractorWriteException() {}
