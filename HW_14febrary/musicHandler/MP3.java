@@ -1,6 +1,6 @@
 package HW_14febrary.musicHandler;
 
-import HW_14febrary.data.MusicStorage;
+import HW_14febrary.entities.Track;
 
 /**
  * Created by Timbaev on 14.02.2017.
@@ -10,25 +10,32 @@ public class MP3 implements Player {
 
     private boolean isPlay = false;
     private boolean isPause = false;
-    private boolean isTrackPicked = false;
-    private MusicStorage musicStorage;
-    private String currentSong;
+    private static MP3 MP3Player = null;
+    private static Track currentSong;
 
-    public MP3(MusicStorage musicStorage) {
-        this.musicStorage = musicStorage;
+    private MP3() {}
+
+    public static MP3 getInstance(Track track) {
+        if (MP3Player == null) {
+            MP3Player = new MP3();
+        }
+        currentSong = track;
+        return MP3Player;
     }
 
     @Override
     public void play() {
         if (isPause) {
-            System.out.println("Ok, continue playing: " + currentSong);
+            System.out.println("Ok, continue playing: " + currentSong.getName());
             isPause = false;
+            isPlay = true;
         } else {
             if (!isPlay) {
-                System.out.println("Now playing: " + currentSong);
+                System.out.println("Now playing: " + currentSong.getName());
                 isPlay = true;
             } else {
                 System.out.println("Music already plays");
+
             }
         }
     }
@@ -46,23 +53,14 @@ public class MP3 implements Player {
 
     @Override
     public void stop() {
-        if (isPlay) {
+        if (isPlay || isPause) {
             System.out.println("Music was been stopped");
-            isTrackPicked = false;
+            PlayerManager.isTrackPicked = false;
+            isPlay = false;
+            isPause = false;
         } else {
             System.out.println("Music not playing now");
         }
-    }
-
-    @Override
-    public void pickTrack(int numberOfTrack) {
-        currentSong = musicStorage.scan().get(numberOfTrack - 1).getName();
-        isTrackPicked = true;
-    }
-
-    @Override
-    public boolean isTrackPicked() {
-        return isTrackPicked;
     }
 
 }

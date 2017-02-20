@@ -17,7 +17,7 @@ public class MusicStorage {
     private ArrayList<Track> tracks;
 
     public MusicStorage() {
-        dataStorage = new IntornalDataStorage();
+        dataStorage = new InternalDataStorage();
         tracks = new ArrayList<>();
     }
 

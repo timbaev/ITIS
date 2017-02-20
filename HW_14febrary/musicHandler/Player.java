@@ -8,6 +8,4 @@ public interface Player {
     public void play();
     public void pause();
     public void stop();
-    public void pickTrack(int numberOfTrack);
-    public boolean isTrackPicked();
 }
